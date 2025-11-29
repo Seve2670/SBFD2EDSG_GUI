@@ -41,6 +41,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.output_code_textbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.filter0_checkbox = new System.Windows.Forms.CheckBox();
+            this.regenerate_button = new System.Windows.Forms.Button();
+            this.clear_logs_button = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -59,7 +63,7 @@
             // 
             // open_file_button
             // 
-            this.open_file_button.Location = new System.Drawing.Point(481, 95);
+            this.open_file_button.Location = new System.Drawing.Point(471, 95);
             this.open_file_button.Name = "open_file_button";
             this.open_file_button.Size = new System.Drawing.Size(121, 23);
             this.open_file_button.TabIndex = 2;
@@ -99,7 +103,7 @@
             // copy_output_button
             // 
             this.copy_output_button.Enabled = false;
-            this.copy_output_button.Location = new System.Drawing.Point(481, 124);
+            this.copy_output_button.Location = new System.Drawing.Point(471, 124);
             this.copy_output_button.Name = "copy_output_button";
             this.copy_output_button.Size = new System.Drawing.Size(121, 23);
             this.copy_output_button.TabIndex = 5;
@@ -112,7 +116,7 @@
             this.log_geneated_text_button.AutoSize = true;
             this.log_geneated_text_button.Checked = true;
             this.log_geneated_text_button.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.log_geneated_text_button.Location = new System.Drawing.Point(481, 153);
+            this.log_geneated_text_button.Location = new System.Drawing.Point(471, 196);
             this.log_geneated_text_button.Name = "log_geneated_text_button";
             this.log_geneated_text_button.Size = new System.Drawing.Size(131, 17);
             this.log_geneated_text_button.TabIndex = 6;
@@ -178,17 +182,62 @@
             this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.ForeColor = System.Drawing.Color.SlateBlue;
-            this.label1.Location = new System.Drawing.Point(588, 2);
+            this.label1.Location = new System.Drawing.Point(551, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 15);
             this.label1.TabIndex = 8;
             this.label1.Text = "by Seve267";
             // 
+            // filter0_checkbox
+            // 
+            this.filter0_checkbox.AutoSize = true;
+            this.filter0_checkbox.Location = new System.Drawing.Point(471, 220);
+            this.filter0_checkbox.Name = "filter0_checkbox";
+            this.filter0_checkbox.Size = new System.Drawing.Size(147, 17);
+            this.filter0_checkbox.TabIndex = 9;
+            this.filter0_checkbox.Text = "Remove labels, keywords";
+            this.filter0_checkbox.UseVisualStyleBackColor = true;
+            // 
+            // regenerate_button
+            // 
+            this.regenerate_button.Enabled = false;
+            this.regenerate_button.Location = new System.Drawing.Point(471, 252);
+            this.regenerate_button.Name = "regenerate_button";
+            this.regenerate_button.Size = new System.Drawing.Size(121, 23);
+            this.regenerate_button.TabIndex = 10;
+            this.regenerate_button.Text = "Regenerate";
+            this.regenerate_button.UseVisualStyleBackColor = true;
+            this.regenerate_button.Click += new System.EventHandler(this.regenerate_button_Click);
+            // 
+            // clear_logs_button
+            // 
+            this.clear_logs_button.Location = new System.Drawing.Point(495, 153);
+            this.clear_logs_button.Name = "clear_logs_button";
+            this.clear_logs_button.Size = new System.Drawing.Size(75, 23);
+            this.clear_logs_button.TabIndex = 11;
+            this.clear_logs_button.Text = "Clear Logs";
+            this.clear_logs_button.UseVisualStyleBackColor = true;
+            this.clear_logs_button.Click += new System.EventHandler(this.clear_logs_button_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(505, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "v.1.1.0";
+            // 
             // MainWindow
             // 
+            this.AcceptButton = this.open_file_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 315);
+            this.ClientSize = new System.Drawing.Size(619, 311);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.clear_logs_button);
+            this.Controls.Add(this.regenerate_button);
+            this.Controls.Add(this.filter0_checkbox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.log_geneated_text_button);
@@ -227,6 +276,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox output_code_textbox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox filter0_checkbox;
+        private System.Windows.Forms.Button regenerate_button;
+        private System.Windows.Forms.Button clear_logs_button;
+        private System.Windows.Forms.Label label2;
     }
 }
 

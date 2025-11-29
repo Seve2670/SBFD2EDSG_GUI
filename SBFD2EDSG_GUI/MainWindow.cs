@@ -15,9 +15,9 @@ namespace SBFD2EDSG_GUI
         public string pb_filePath = String.Empty;
         public string pb_fileName = String.Empty;
         public static bool codeGenerated = false;
-        public static string output_buffer;
-        public static int output_buffer_len;
-        private static int a_readcount; // max 15
+        public static string output_buffer = String.Empty;
+        public static int output_buffer_len = 0;
+        private static int a_readcount = 0; // max 15
 
         public MainWindow()
         {
@@ -58,6 +58,12 @@ namespace SBFD2EDSG_GUI
             output_code_textbox.Text = String.Empty;
         }
 
+
+        private void CLEAR_LOG_TEXT()
+        {
+            output_textbox.Text = String.Empty;
+        }
+
         private void open_file_button_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -68,11 +74,9 @@ namespace SBFD2EDSG_GUI
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    pb_filePath = openFileDialog.FileName;
-                    pb_fileName = openFileDialog.SafeFileName;
-                    WRITELINE_LOG_TEXT_TO_OUTPUT("File opened: " + pb_filePath);
+                    string a_pb_fileName = openFileDialog.SafeFileName;
 
-                    foreach (char c in pb_fileName)
+                    foreach (char c in a_pb_fileName)
                     {
                         if (c > 127)
                         {
@@ -81,7 +85,11 @@ namespace SBFD2EDSG_GUI
                         }
                     }
 
+                    a_pb_fileName = String.Empty;
 
+                    pb_filePath = openFileDialog.FileName;
+                    pb_fileName = openFileDialog.SafeFileName;
+                    WRITELINE_LOG_TEXT_TO_OUTPUT("File opened: " + pb_filePath);
 
                     if (!BEGIN_PROCESS(pb_filePath, pb_fileName))
                     {
@@ -97,6 +105,7 @@ namespace SBFD2EDSG_GUI
                         WRITELINE_CODE_LOG_TEXT_TO_OUTPUT(output_buffer);
                     }
 
+                    regenerate_button.Enabled = true;
                     codeGenerated = true;
 
                 }
@@ -108,7 +117,15 @@ namespace SBFD2EDSG_GUI
 
         public bool BEGIN_PROCESS(string filePath, string fileName)
         {
+            output_buffer = String.Empty;
             string a_output_buffer = String.Empty;
+            a_readcount = 0;
+
+            if (filter0_checkbox.Checked == true)
+            {
+                goto read_data;
+            }
+
             a_output_buffer += ":" + fileName;
 
             // File name twister
@@ -139,6 +156,8 @@ namespace SBFD2EDSG_GUI
             output_buffer = _NEXT_LINE(output_buffer);
             output_buffer += "hex";
             output_buffer = _NEXT_LINE(output_buffer);
+
+            read_data:
             string b_output_buffer = _READ_DATA_TO_STRING(filePath);
 
             if (b_output_buffer == "")
@@ -148,8 +167,14 @@ namespace SBFD2EDSG_GUI
 
             output_buffer += b_output_buffer;
             output_buffer = _NEXT_LINE(output_buffer);
-            output_buffer += "end";
 
+            if (filter0_checkbox.Checked == true)
+            {
+                goto end_data;
+            }
+
+            output_buffer += "end";
+            end_data:
             
             //WRITELINE_LOG_TEXT_TO_OUTPUT(output_buffer);
             return true;
@@ -246,6 +271,25 @@ namespace SBFD2EDSG_GUI
 
             output_code_textbox.Text = String.Empty;
             output_code_textbox.Enabled = true;
+        }
+
+        private void regenerate_button_Click(object sender, EventArgs e)
+        {
+            if (!BEGIN_PROCESS(pb_filePath, pb_fileName))
+            {
+                WRITELINE_LOG_TEXT_TO_OUTPUT("Regenerate Failed.");
+                codeGenerated = false;
+                return;
+            }
+
+            CLEAR_CODE_LOG_TEXT();
+            WRITE_CODE_LOG_TEXT_TO_OUTPUT(output_buffer);
+            WRITELINE_LOG_TEXT_TO_OUTPUT("Regenerated.");
+        }
+
+        private void clear_logs_button_Click(object sender, EventArgs e)
+        {
+            CLEAR_LOG_TEXT();
         }
     }
 }
