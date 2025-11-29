@@ -1,6 +1,6 @@
 # Sanny Builder IDE tool: Binary data embedder & Code generator tool.
 
-Made in C# 😀 GUI Based IDE tool.
+Created from C# 😀 GUI Based IDE tool.
 
 This tool is useful for embedding a binary file into the code.
 This tool is a code generator.
