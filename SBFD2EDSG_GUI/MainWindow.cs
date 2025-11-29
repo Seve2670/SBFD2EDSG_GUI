@@ -1,4 +1,5 @@
-﻿using System;
+﻿// v.1.1.0
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,38 +27,32 @@ namespace SBFD2EDSG_GUI
             this.Text = pb_program_name;
             output_textbox.Text += pb_program_name + " Initialized.\r\n";
             description_label.Text = "Sanny Builder Code Generator Tool: File Embedder tool (GUI)";
-            //output_code_textbox.Text = "'Show generated code' option is disabled.\r\nAutomatically cleared this log when enabled.";
         }
 
         private void WRITE_LOG_TEXT_TO_OUTPUT(string input)
         {
             output_textbox.Text += input;
-            //Console.Write(output_textbox.Text);
         }
 
         private void WRITELINE_LOG_TEXT_TO_OUTPUT(string input)
         {
             output_textbox.Text += input + "\r\n";
-            //Console.WriteLine(output_textbox.Text);
         }
 
         private void WRITE_CODE_LOG_TEXT_TO_OUTPUT(string input)
         {
             output_code_textbox.Text += input;
-            //Console.Write(output_code_textbox.Text);
         }
 
         private void WRITELINE_CODE_LOG_TEXT_TO_OUTPUT(string input)
         {
             output_code_textbox.Text += input + "\r\n";
-            //Console.WriteLine(output_code_textbox.Text);
         }
 
         private void CLEAR_CODE_LOG_TEXT()
         {
             output_code_textbox.Text = String.Empty;
         }
-
 
         private void CLEAR_LOG_TEXT()
         {
@@ -74,6 +69,7 @@ namespace SBFD2EDSG_GUI
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    string a_pb_filePath = openFileDialog.FileName;
                     string a_pb_fileName = openFileDialog.SafeFileName;
 
                     foreach (char c in a_pb_fileName)
@@ -85,6 +81,39 @@ namespace SBFD2EDSG_GUI
                         }
                     }
 
+                    try
+                    {
+                        using (FileStream a_tempfile = new FileStream(a_pb_filePath, FileMode.Open))
+                        {
+                            long a_temp_len = a_tempfile.Length;
+
+                            if (a_temp_len >= 33344)
+                            {
+                                DialogResult mbox_temp_result = MessageBox.Show("The selected file size is larger than 32KB (Kilobytes),\r\nDo you want to continue?", "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                if (mbox_temp_result == DialogResult.No)
+                                {
+                                    a_pb_filePath = String.Empty;
+                                    a_pb_fileName = String.Empty;
+                                    a_temp_len = 0;
+                                    a_tempfile.Close();
+                                    return;
+                                }
+                            }
+
+                            a_temp_len = 0;
+                            a_tempfile.Close();
+                        }
+
+                    }
+                    catch (Exception exp)
+                    {
+                        WRITELINE_LOG_TEXT_TO_OUTPUT("Exception occured:");
+                        WRITELINE_LOG_TEXT_TO_OUTPUT(exp.Message);
+                        return;
+                    }
+
+
+                    a_pb_filePath = String.Empty;
                     a_pb_fileName = String.Empty;
 
                     pb_filePath = openFileDialog.FileName;
@@ -112,8 +141,6 @@ namespace SBFD2EDSG_GUI
 
             }
         }
-
-        
 
         public bool BEGIN_PROCESS(string filePath, string fileName)
         {
@@ -152,7 +179,6 @@ namespace SBFD2EDSG_GUI
             output_buffer = output_buffer.Replace('\x60', '_'); // `
             output_buffer = output_buffer.Replace('\x7E', '_'); // ~
 
-            
             output_buffer = _NEXT_LINE(output_buffer);
             output_buffer += "hex";
             output_buffer = _NEXT_LINE(output_buffer);
@@ -176,7 +202,6 @@ namespace SBFD2EDSG_GUI
             output_buffer += "end";
             end_data:
             
-            //WRITELINE_LOG_TEXT_TO_OUTPUT(output_buffer);
             return true;
         }
 
@@ -190,12 +215,12 @@ namespace SBFD2EDSG_GUI
                 {
                     #region ...Reading procedure code
                     long fileLen = targetFile.Length;
-                    // File buffer
+
+                    // Data buffer
                     byte[] buffer = new byte[fileLen];
 
                     targetFile.Read(buffer, 0, (int)fileLen);
 
-                    
                     // Reading procedure, writing in the string output buffer.
                     // Reads slowest, 20KBps I guess.
                     // Reading speed, depending on the system speed.
