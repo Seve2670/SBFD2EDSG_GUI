@@ -17,7 +17,7 @@ namespace SBFD2EDSG_GUI
         public static bool codeGenerated = false;
         public static string output_buffer;
         public static int output_buffer_len;
-        private static int count; // max 15
+        private static int a_readcount; // max 15
 
         public MainWindow()
         {
@@ -25,39 +25,43 @@ namespace SBFD2EDSG_GUI
             program_title.Text = pb_program_name;
             this.Text = pb_program_name;
             output_textbox.Text += pb_program_name + " Initialized.\r\n";
-            description_label.Text = "Sanny Builder Tool: Code generator File Embedder tool (GUI)";
-            output_code_textbox.Text = "'Show generated code' option is disabled.\r\nAutomatically cleared this log when enabled.";
+            description_label.Text = "Sanny Builder Code Generator Tool: File Embedder tool (GUI)";
+            //output_code_textbox.Text = "'Show generated code' option is disabled.\r\nAutomatically cleared this log when enabled.";
         }
 
         private void WRITE_LOG_TEXT_TO_OUTPUT(string input)
         {
             output_textbox.Text += input;
-            Console.Write(output_textbox.Text);
+            //Console.Write(output_textbox.Text);
         }
 
         private void WRITELINE_LOG_TEXT_TO_OUTPUT(string input)
         {
             output_textbox.Text += input + "\r\n";
-            Console.WriteLine(output_textbox.Text);
+            //Console.WriteLine(output_textbox.Text);
         }
 
         private void WRITE_CODE_LOG_TEXT_TO_OUTPUT(string input)
         {
             output_code_textbox.Text += input;
-            Console.Write(output_code_textbox.Text);
+            //Console.Write(output_code_textbox.Text);
         }
 
         private void WRITELINE_CODE_LOG_TEXT_TO_OUTPUT(string input)
         {
             output_code_textbox.Text += input + "\r\n";
-            Console.WriteLine(output_code_textbox.Text);
+            //Console.WriteLine(output_code_textbox.Text);
+        }
+
+        private void CLEAR_CODE_LOG_TEXT()
+        {
+            output_code_textbox.Text = String.Empty;
         }
 
         private void open_file_button_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = "c:\\";
                 openFileDialog.Filter = "All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = true;
@@ -68,14 +72,24 @@ namespace SBFD2EDSG_GUI
                     pb_fileName = openFileDialog.SafeFileName;
                     WRITELINE_LOG_TEXT_TO_OUTPUT("File opened: " + pb_filePath);
 
-                    //LoadingForm loadingForm = new LoadingForm();
-                    ///loadingForm.ShowDialog();
+                    foreach (char c in pb_fileName)
+                    {
+                        if (c > 127)
+                        {
+                            WRITELINE_LOG_TEXT_TO_OUTPUT("Error, File name with containing a Unicode character is not supported.");
+                            return;
+                        }
+                    }
+
+
 
                     if (!BEGIN_PROCESS(pb_filePath, pb_fileName))
                     {
-                        WRITELINE_LOG_TEXT_TO_OUTPUT("Failed, Empty file.");
+                        WRITELINE_LOG_TEXT_TO_OUTPUT("Failed.");
+                        return;
                     }
 
+                    CLEAR_CODE_LOG_TEXT();
                     copy_output_button.Enabled = true;
 
                     if (log_geneated_text_button.Checked == true)
@@ -96,7 +110,32 @@ namespace SBFD2EDSG_GUI
         {
             string a_output_buffer = String.Empty;
             a_output_buffer += ":" + fileName;
+
+            // File name twister
             output_buffer = a_output_buffer.Replace('.', '_');
+            output_buffer = output_buffer.Replace(' ', '_');
+            output_buffer = output_buffer.Replace('\x27', '_'); // '
+            output_buffer = output_buffer.Replace('\x3B', '_'); // ;
+            output_buffer = output_buffer.Replace('\x2B', '_'); // +
+            output_buffer = output_buffer.Replace('\x2D', '_'); // -
+            output_buffer = output_buffer.Replace('\x3D', '_'); // =
+            output_buffer = output_buffer.Replace('\x7B', '_'); // {
+            output_buffer = output_buffer.Replace('\x5B', '_'); // [
+            output_buffer = output_buffer.Replace('\x5D', '_'); // ]
+            output_buffer = output_buffer.Replace('\x7D', '_'); // }
+            output_buffer = output_buffer.Replace('\x28', '_'); // (
+            output_buffer = output_buffer.Replace('\x29', '_'); // )
+            output_buffer = output_buffer.Replace('\x21', '_'); // !
+            output_buffer = output_buffer.Replace('\x40', '_'); // @
+            output_buffer = output_buffer.Replace('\x23', '_'); // #
+            output_buffer = output_buffer.Replace('\x24', '_'); // $
+            output_buffer = output_buffer.Replace('\x25', '_'); // %
+            output_buffer = output_buffer.Replace('\x5E', '_'); // ^
+            output_buffer = output_buffer.Replace('\x26', '_'); // &
+            output_buffer = output_buffer.Replace('\x60', '_'); // `
+            output_buffer = output_buffer.Replace('\x7E', '_'); // ~
+
+            
             output_buffer = _NEXT_LINE(output_buffer);
             output_buffer += "hex";
             output_buffer = _NEXT_LINE(output_buffer);
@@ -132,7 +171,9 @@ namespace SBFD2EDSG_GUI
                     targetFile.Read(buffer, 0, (int)fileLen);
 
                     
-
+                    // Reading procedure, writing in the string output buffer.
+                    // Reads slowest, 20KBps I guess.
+                    // Reading speed, depending on the system speed.
                     for (int i = 0; i < fileLen; i++)
                     {
                         object a_buffer = buffer.GetValue(i);
@@ -140,7 +181,7 @@ namespace SBFD2EDSG_GUI
                         string b_buffer;
                         b_buffer = String.Format("{0:X}", number);
 
-                        if (count == 0)
+                        if (a_readcount == 0)
                         {
                             hexStringBuffer += " ";
                         }
@@ -148,15 +189,16 @@ namespace SBFD2EDSG_GUI
                         hexStringBuffer += b_buffer;
                         hexStringBuffer += " ";
 
-                        if (count > 14)
+                        if (a_readcount > 14)
                         {
                             hexStringBuffer += "\r\n";
-                            count = -1;
+                            a_readcount = -1;
                         }
 
-                        count += 1;
+                        a_readcount += 1;
                     }
 
+                    // Finally.
                     targetFile.Close();
                     
                     #endregion
@@ -180,6 +222,7 @@ namespace SBFD2EDSG_GUI
 
         private void copy_output_button_Click(object sender, EventArgs e)
         {
+            // Clipboard control
             Clipboard.Clear();
             Clipboard.SetText(output_buffer);
         }

@@ -110,6 +110,8 @@
             // log_geneated_text_button
             // 
             this.log_geneated_text_button.AutoSize = true;
+            this.log_geneated_text_button.Checked = true;
+            this.log_geneated_text_button.CheckState = System.Windows.Forms.CheckState.Checked;
             this.log_geneated_text_button.Location = new System.Drawing.Point(481, 153);
             this.log_geneated_text_button.Name = "log_geneated_text_button";
             this.log_geneated_text_button.Size = new System.Drawing.Size(131, 17);
@@ -162,7 +164,6 @@
             // 
             // output_code_textbox
             // 
-            this.output_code_textbox.Enabled = false;
             this.output_code_textbox.Location = new System.Drawing.Point(7, 20);
             this.output_code_textbox.Multiline = true;
             this.output_code_textbox.Name = "output_code_textbox";
