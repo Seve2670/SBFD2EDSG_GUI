@@ -5,6 +5,7 @@ Made in C# 😀 GUI Based IDE tool.
 This tool is useful for embedding a binary file into the code.
 This tool is a code generator.
 ![Showcase of the tool.](SBFD2EDSG_GUI/img/1.png)
+![Showcase of the tool.](SBFD2EDSG_GUI/img/2.png)
 
 **Pre-release build: [#v.1.1.0-alpha.1](https://github.com/Seve2670/SBFD2EDSG_GUI/releases/tag/v1.1.0-alpha.1)
 
