@@ -15,6 +15,9 @@ namespace SBFD2EDSG_GUI
         public string pb_filePath = String.Empty;
         public string pb_fileName = String.Empty;
         public static bool codeGenerated = false;
+        public static string output_buffer;
+        public static int output_buffer_len;
+        private static int count; // max 15
 
         public MainWindow()
         {
@@ -87,9 +90,7 @@ namespace SBFD2EDSG_GUI
             }
         }
 
-        public static string output_buffer;
-        public static int output_buffer_len;
-        private static int count; // max 15
+        
 
         public bool BEGIN_PROCESS(string filePath, string fileName)
         {
@@ -169,21 +170,6 @@ namespace SBFD2EDSG_GUI
             }
 
             return hexStringBuffer;
-        }
-
-        static string StringToHex(string input)
-        {
-            // Convert string to byte array
-            byte[] byteArray = Encoding.UTF8.GetBytes(input);
-
-            // Convert byte array to hexadecimal string
-            StringBuilder hexBuilder = new StringBuilder();
-            foreach (byte b in byteArray)
-            {
-                hexBuilder.Append(b.ToString("X2")); // X2 ensures two-digit representation
-            }
-
-            return hexBuilder.ToString();
         }
 
         private string _NEXT_LINE(string output_buffer)
