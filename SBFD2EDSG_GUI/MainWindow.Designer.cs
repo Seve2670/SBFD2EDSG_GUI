@@ -75,7 +75,7 @@
             this.groupBox1.Size = new System.Drawing.Size(417, 194);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "LOGS";
+            this.groupBox1.Text = "Logs";
             // 
             // output_textbox
             // 
@@ -112,9 +112,9 @@
             this.log_geneated_text_button.AutoSize = true;
             this.log_geneated_text_button.Location = new System.Drawing.Point(481, 153);
             this.log_geneated_text_button.Name = "log_geneated_text_button";
-            this.log_geneated_text_button.Size = new System.Drawing.Size(141, 30);
+            this.log_geneated_text_button.Size = new System.Drawing.Size(131, 17);
             this.log_geneated_text_button.TabIndex = 6;
-            this.log_geneated_text_button.Text = "Show generated code\r\n(degrades performance.)";
+            this.log_geneated_text_button.Text = "Show generated code";
             this.log_geneated_text_button.UseVisualStyleBackColor = true;
             this.log_geneated_text_button.CheckedChanged += new System.EventHandler(this.log_geneated_text_button_CheckedChanged);
             // 

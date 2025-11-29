@@ -22,7 +22,7 @@ namespace SBFD2EDSG_GUI
             program_title.Text = pb_program_name;
             this.Text = pb_program_name;
             output_textbox.Text += pb_program_name + " Initialized.\r\n";
-            description_label.Text = "Sanny Builder Tool: File Data To Embedded Code Script Generator (GUI)";
+            description_label.Text = "Sanny Builder Tool: Code generator File Embedder tool (GUI)";
             output_code_textbox.Text = "'Show generated code' option is disabled.\r\nAutomatically cleared this log when enabled.";
         }
 
