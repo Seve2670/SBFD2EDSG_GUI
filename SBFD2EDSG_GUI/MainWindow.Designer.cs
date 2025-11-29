@@ -64,7 +64,8 @@
             // 
             // open_file_button
             // 
-            this.open_file_button.Location = new System.Drawing.Point(471, 95);
+            this.open_file_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.open_file_button.Location = new System.Drawing.Point(517, 133);
             this.open_file_button.Name = "open_file_button";
             this.open_file_button.Size = new System.Drawing.Size(121, 23);
             this.open_file_button.TabIndex = 2;
@@ -77,7 +78,7 @@
             this.groupBox1.Controls.Add(this.output_textbox);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(417, 194);
+            this.groupBox1.Size = new System.Drawing.Size(462, 232);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Logs";
@@ -89,7 +90,7 @@
             this.output_textbox.Name = "output_textbox";
             this.output_textbox.ReadOnly = true;
             this.output_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.output_textbox.Size = new System.Drawing.Size(404, 168);
+            this.output_textbox.Size = new System.Drawing.Size(449, 206);
             this.output_textbox.TabIndex = 0;
             // 
             // description_label
@@ -103,8 +104,9 @@
             // 
             // copy_output_button
             // 
+            this.copy_output_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.copy_output_button.Enabled = false;
-            this.copy_output_button.Location = new System.Drawing.Point(471, 124);
+            this.copy_output_button.Location = new System.Drawing.Point(517, 162);
             this.copy_output_button.Name = "copy_output_button";
             this.copy_output_button.Size = new System.Drawing.Size(121, 23);
             this.copy_output_button.TabIndex = 5;
@@ -114,10 +116,11 @@
             // 
             // log_geneated_text_button
             // 
+            this.log_geneated_text_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.log_geneated_text_button.AutoSize = true;
             this.log_geneated_text_button.Checked = true;
             this.log_geneated_text_button.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.log_geneated_text_button.Location = new System.Drawing.Point(471, 196);
+            this.log_geneated_text_button.Location = new System.Drawing.Point(517, 234);
             this.log_geneated_text_button.Name = "log_geneated_text_button";
             this.log_geneated_text_button.Size = new System.Drawing.Size(131, 17);
             this.log_geneated_text_button.TabIndex = 6;
@@ -130,9 +133,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.code_tab_page);
             this.tabControl1.Location = new System.Drawing.Point(16, 67);
+            this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(443, 236);
+            this.tabControl1.Size = new System.Drawing.Size(482, 270);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPage1
@@ -141,7 +145,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(435, 210);
+            this.tabPage1.Size = new System.Drawing.Size(474, 244);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Logs";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -152,7 +156,7 @@
             this.code_tab_page.Location = new System.Drawing.Point(4, 22);
             this.code_tab_page.Name = "code_tab_page";
             this.code_tab_page.Padding = new System.Windows.Forms.Padding(3);
-            this.code_tab_page.Size = new System.Drawing.Size(435, 210);
+            this.code_tab_page.Size = new System.Drawing.Size(474, 244);
             this.code_tab_page.TabIndex = 1;
             this.code_tab_page.Text = "Code";
             this.code_tab_page.UseVisualStyleBackColor = true;
@@ -162,7 +166,7 @@
             this.groupBox2.Controls.Add(this.output_code_textbox);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(417, 194);
+            this.groupBox2.Size = new System.Drawing.Size(462, 232);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Code";
@@ -174,16 +178,17 @@
             this.output_code_textbox.Name = "output_code_textbox";
             this.output_code_textbox.ReadOnly = true;
             this.output_code_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.output_code_textbox.Size = new System.Drawing.Size(404, 168);
+            this.output_code_textbox.Size = new System.Drawing.Size(449, 206);
             this.output_code_textbox.TabIndex = 0;
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.ForeColor = System.Drawing.Color.SlateBlue;
-            this.label1.Location = new System.Drawing.Point(551, 2);
+            this.label1.Location = new System.Drawing.Point(598, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 15);
             this.label1.TabIndex = 8;
@@ -191,8 +196,9 @@
             // 
             // filter0_checkbox
             // 
+            this.filter0_checkbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.filter0_checkbox.AutoSize = true;
-            this.filter0_checkbox.Location = new System.Drawing.Point(471, 220);
+            this.filter0_checkbox.Location = new System.Drawing.Point(517, 258);
             this.filter0_checkbox.Name = "filter0_checkbox";
             this.filter0_checkbox.Size = new System.Drawing.Size(147, 17);
             this.filter0_checkbox.TabIndex = 9;
@@ -201,8 +207,9 @@
             // 
             // regenerate_button
             // 
+            this.regenerate_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.regenerate_button.Enabled = false;
-            this.regenerate_button.Location = new System.Drawing.Point(471, 252);
+            this.regenerate_button.Location = new System.Drawing.Point(517, 290);
             this.regenerate_button.Name = "regenerate_button";
             this.regenerate_button.Size = new System.Drawing.Size(121, 23);
             this.regenerate_button.TabIndex = 10;
@@ -212,7 +219,8 @@
             // 
             // clear_logs_button
             // 
-            this.clear_logs_button.Location = new System.Drawing.Point(495, 153);
+            this.clear_logs_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.clear_logs_button.Location = new System.Drawing.Point(541, 191);
             this.clear_logs_button.Name = "clear_logs_button";
             this.clear_logs_button.Size = new System.Drawing.Size(75, 23);
             this.clear_logs_button.TabIndex = 11;
@@ -222,8 +230,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(505, 4);
+            this.label2.Location = new System.Drawing.Point(551, 4);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 12;
@@ -231,7 +240,8 @@
             // 
             // info_button
             // 
-            this.info_button.Location = new System.Drawing.Point(417, 2);
+            this.info_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.info_button.Location = new System.Drawing.Point(463, 2);
             this.info_button.Name = "info_button";
             this.info_button.Size = new System.Drawing.Size(82, 20);
             this.info_button.TabIndex = 13;
@@ -244,7 +254,7 @@
             this.AcceptButton = this.open_file_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(619, 311);
+            this.ClientSize = new System.Drawing.Size(665, 349);
             this.Controls.Add(this.info_button);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.clear_logs_button);
