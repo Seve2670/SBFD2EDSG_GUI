@@ -3,5 +3,5 @@
 This tool is useful for embedding a binary file into the code.
 ![Showcase of the tool.](SBFD2EDSG_GUI/img/1.png)
 
-**Latest release builds: 
+**Latest release builds: [#v.1.1.0-alpha.1](https://github.com/Seve2670/SBFD2EDSG_GUI/releases/tag/v1.1.0-alpha.1)
  
