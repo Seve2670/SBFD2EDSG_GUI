@@ -45,6 +45,7 @@
             this.regenerate_button = new System.Windows.Forms.Button();
             this.clear_logs_button = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.info_button = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -228,12 +229,23 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "v.1.1.0";
             // 
+            // info_button
+            // 
+            this.info_button.Location = new System.Drawing.Point(417, 2);
+            this.info_button.Name = "info_button";
+            this.info_button.Size = new System.Drawing.Size(82, 20);
+            this.info_button.TabIndex = 13;
+            this.info_button.Text = "useless tool?";
+            this.info_button.UseVisualStyleBackColor = true;
+            this.info_button.Click += new System.EventHandler(this.info_button_Click);
+            // 
             // MainWindow
             // 
             this.AcceptButton = this.open_file_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(619, 311);
+            this.Controls.Add(this.info_button);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.clear_logs_button);
             this.Controls.Add(this.regenerate_button);
@@ -280,6 +292,7 @@
         private System.Windows.Forms.Button regenerate_button;
         private System.Windows.Forms.Button clear_logs_button;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button info_button;
     }
 }
 

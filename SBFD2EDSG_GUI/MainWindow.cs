@@ -24,7 +24,7 @@ namespace SBFD2EDSG_GUI
         {
             InitializeComponent();
             program_title.Text = pb_program_name;
-            this.Text = pb_program_name;
+            this.Text = pb_program_name + " :: NO FILE SELECTED";
             output_textbox.Text += pb_program_name + " Initialized.\r\n";
             description_label.Text = "Sanny Builder Code Generator Tool: File Embedder tool (GUI)";
         }
@@ -126,6 +126,10 @@ namespace SBFD2EDSG_GUI
                         return;
                     }
 
+                    // When ready, success.
+
+                    this.Text = pb_program_name + " :: [" + pb_fileName + "]";
+                    tabControl1.SelectedTab = code_tab_page;
                     CLEAR_CODE_LOG_TEXT();
                     copy_output_button.Enabled = true;
 
@@ -315,6 +319,12 @@ namespace SBFD2EDSG_GUI
         private void clear_logs_button_Click(object sender, EventArgs e)
         {
             CLEAR_LOG_TEXT();
+        }
+
+        private void info_button_Click(object sender, EventArgs e)
+        {
+            UselessWindowForm uwf_form = new UselessWindowForm();
+            uwf_form.ShowDialog();
         }
     }
 }
