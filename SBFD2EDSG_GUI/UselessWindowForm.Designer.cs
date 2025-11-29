@@ -36,11 +36,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ok_button
             // 
-            this.ok_button.Location = new System.Drawing.Point(147, 320);
+            this.ok_button.Location = new System.Drawing.Point(145, 362);
             this.ok_button.Name = "ok_button";
             this.ok_button.Size = new System.Drawing.Size(75, 23);
             this.ok_button.TabIndex = 0;
@@ -80,7 +81,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 232);
+            this.label3.Location = new System.Drawing.Point(20, 291);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(322, 13);
             this.label3.TabIndex = 4;
@@ -89,13 +90,13 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 245);
+            this.label4.Location = new System.Drawing.Point(41, 313);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(293, 52);
+            this.label4.Size = new System.Drawing.Size(284, 39);
             this.label4.TabIndex = 5;
-            this.label4.Text = "I created this program, for the project i\'ve been working on.\r\n\r\nSo, if you are w" +
-    "illing to use this program, Thank you, and you\r\ncan also do experiment using thi" +
-    "s program.";
+            this.label4.Text = "I created this program, for the project i\'ve been working on.\r\nSo, if you are wil" +
+    "ling to use this program, \r\nThank you.";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
@@ -106,12 +107,24 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "See, that\'s why I talking about to.";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(43, 225);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(279, 39);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "My only goal for this program is to make a code generator,\r\nbut, I realize that t" +
+    "here is a easiest solution to embed a\r\nbinary data into the script\'s body.";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // UselessWindowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(372, 355);
+            this.ClientSize = new System.Drawing.Size(368, 397);
             this.ControlBox = false;
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -141,5 +154,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
