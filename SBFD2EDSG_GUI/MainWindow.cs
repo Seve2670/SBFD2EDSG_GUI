@@ -81,6 +81,7 @@ namespace SBFD2EDSG_GUI
                     }
 
                     codeGenerated = true;
+                    //loadingForm.
 
                 }
 
